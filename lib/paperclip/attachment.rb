@@ -390,7 +390,7 @@ module Paperclip
     end
 
     def active_validator_classes
-      @instance.class.validators.map(&:class)
+      @instance.class.validators.map(&:class) + @instance.class.superclass.validators.map(&:class)
     end
 
     def missing_required_validator?
